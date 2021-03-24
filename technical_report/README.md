@@ -55,13 +55,13 @@ Each unzipped file contains 3 different `.csv` files for each drug, including:
 
 I decided to join `case.csv` to `event.csv` in order to retain multiple side effect instances as individual data points (rows). This was performed using SQL `left join`. The process was repeated for all drugs to create the base of my data set.
 
-For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/1_data_collection/1a_yellow_card.ipynb).
+For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/blob/4e64cda4970fbe7eafaf58246da8eeb975a49c18/1_data_collection/1a_yellow_card.ipynb).
 
 
 ### 2. DrugBank
 DrugBank was used to obtain additional information on the drugs from Yellow Card Scheme, such as drug targets, drug category, and the DrugBank ID. These were added to the data set I created above.
 
-For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/1_data_collection/1b_drugbank.ipynb).
+For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/blob/4e64cda4970fbe7eafaf58246da8eeb975a49c18/1_data_collection/1b_drugbank.ipynb).
 
 ### 3. UCI data set - Drugs.com reviews
 I also decided to incorporate the Drugs.com reviews into my data set. This is a readily available data set on [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29).
@@ -74,8 +74,7 @@ In order to tackle this issue, I utilised `Selenium` to obtain the active ingred
 Here is a snippet of the codes I used:
 ![](screenshots/brand_to_drug.png).
 
-For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/1_data_collection/1c_reviews.ipynb).
-
+For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/blob/4e64cda4970fbe7eafaf58246da8eeb975a49c18/1_data_collection/1c_reviews.ipynb).
 
 ## Biggest Challenge with Merging Data
 The biggest challenge I encountered during the 6 weeks assigned to this project was to merge all the data together. With insufficient RAM, I had trouble merging the Drugs.com reviews to my data set. Methods including SQLite, Pandas `.merge()` `.concat()` failed.
