@@ -14,7 +14,7 @@ I completed this end-to-end project within 6 weeks, from creating a problem stat
 - [Technical report]():
     - This includes introduction, objectives, methodology, information on the dataset, EDA, findings, conclusion, and future work.
 - Folders containing Jupyter notebooks `(.ipynb)`:
-    1) [Data Collection]() - 3 notebooks 
+    1) [Data Collection](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection) - 3 notebooks 
     2) [Creating Dataset]()
     3) [Exploratory Data Analysis (EDA) and Data Modelling]()
 
