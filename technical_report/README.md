@@ -86,9 +86,12 @@ This is how a Dask dashboard looks like:
 
 ## More challenges
 Even though I eventually managed to merge my dataset using Dask, I still encountered other issues:
-- Memory leak: While trialing Dask, I did not close down my clients properly and leaked memory. I kept running out of application memory when running models, and had only resolved the issue 3 days before the due date.
-- Insufficient RAM: Although I had my final dataset ready, I did not have sufficient RAM to process it. Eventually, I dropped the reviews column, and instead used the number of reviews as an indicator.
-- Insufficient time: As I spent a lot of time resolving the issue of insufficient RAM, I only had 3 days to run models. I decided to sample 10% of my dataset for data modelling.
+### Memory leak:
+While trialing Dask, I did not close down my clients properly and leaked memory. I kept running out of application memory when running models, and had only resolved the issue 3 days before the due date.
+### Insufficient RAM:
+Although I had my final dataset ready, I did not have sufficient RAM to process it. Eventually, I dropped the reviews column, and instead used the number of reviews as an indicator.
+### Insufficient time:
+As I spent a lot of time resolving the issue of insufficient RAM, I only had 3 days to run models. I decided to sample 10% of my dataset for data modelling.
 
 ## Final data set
 The final data set has:
@@ -126,14 +129,20 @@ The final data set has:
 ![](screenshots/eda_5.png)
 - The classes within the target variable are very imbalanced, with over 74% being serious, and 0.06% being fatal side effects. This would be addressed at a later stage, using the library `imblearn`.
 
-### NLP on text columns
+### Natural Language Processing (NLP) on text columns
 ![](screenshots/nlp.png)
-- `CountVectorizer` was used on drug targets and drug indications. `ngram_range` of 2 was chosen after trial and error.
-- For drug targets, subunit alpha, muscarinic acetylcholine, adrenergic alpha and growth factor were the msot frequent words.
-- For drug indications, influenza prophylaxis, nausea and vomiting related to pregnancy, birth control, and high blood pressure were the most common words.
-- `TfidfVectorizer` was used on the drugs.com reviews. Words including blood pressure, birth control, weight gain, dry mouth, mood swings had high scores. Such side effects could also be related to birth control medications (e.g. weight gain, mood swings) and blood pressure medications (e.g. dry mouth).
+#### Drug targets
+- `CountVectorizer` was used, `ngram_range` of 2 was chosen after trial and error.
+- Subunit alpha, muscarinic acetylcholine, adrenergic alpha and growth factor related targets appeared the most.
+#### Drug indications
+- `CountVectorizer` was used, `ngram_range` of 2 was chosen after trial and error.
+- Influenza prophylaxis, nausea and vomiting related to pregnancy, birth control, and high blood pressure were the most common words.
+#### Drugs.com reviews
+- `TfidfVectorizer` was used on the drugs.com reviews.
+- Words including blood pressure, birth control, weight gain, dry mouth, mood swings had high scores. Such side effects could also be related to birth control medications (e.g. weight gain, mood swings) and blood pressure medications (e.g. dry mouth).
 
-## Data modeling
+
+## Data modeling
 ![](screenshots/models.png)
 Logistic Regression had the highest mean cross-validated accuracy score of 0.699.
 
@@ -150,19 +159,113 @@ Logistic Regression had the highest mean cross-validated accuracy score of 0.699
 ## Feature importances
 ![](screenshots/feature_importances.jpg)
 ### Non-serious
+#### Positive coefficients
+Drugs targeting proteasome receptors were more likely to result in non-serious side effects.
+#### Negative coefficients
 Side effects involving the following were least likely to be predicted as non-serious side effects:
 - the brain (cerebral haemorrhage, confusional state, loss consciousness, cerebrovascula accident),
 - bleeding or blood clots (gastrointestinal haemorrhage, pulmonary embolism),
 - anaphylactic reaction (swelling face, lip swelling),
-- death (sudden death, complete suicide),
+- death (sudden death, completed suicide),
 - heart attack (chest discomfort, myocardial infarction)
 
-Drugs targeting fatty acid receptors were predicted to be less important in non-serious side effects; while those targeting proteasome receptors were more likely to result in non-serious side effects.
+Drugs targeting fatty acid receptors were predicted to be less important in non-serious side effects.
 
-## Conclusion
+### Serious
+#### Positive coefficients
+- Drug targets with the words cahnnel protein, neuronal acetylcholine subunit, vascular, carbonic anhydrase and alpha adrenergic are more likely to result in serious side effects.
+- Photosensitivity reaction and tonic clonic (seizure) are predicted as serious side effects.
+
+#### Negative coefficients
+- Drug targets involving the words subunit alpha, catalytic subunit, member potassiuum, alpha voltage, dehydrogenase mitochondrial are predicted to be less likely to result in serious side effects.
+- Side effects related to death (completed suicide, sudden death) are less likely to result in serious side effects. These are by definition fatal side effects.
+
+#### Further investigation required
+Condition related to 'induced ulcer' has a negative coefficient, while 'nsaid induced' has a positive coefficient. NSAID induced ulcers are a common side effect on non-steroidal anti-inflammatory drugs. The contradictory coefficients could be caused by insufficient training data, as I only sampled 10% of the data set and under-sampled the `serious` class.
+
+
+### Fatal
+
+#### Positive coefficients
+- Drug targets with the words subunit alpha or beta, adrenergic alpha, anhydrase carbonic, synthase transient, subunit dna, voltage, androgen glucocorticoid, hydroxytryptamine histamine, beta sodium and protein penicillin are more likely to result in fatal side effects.
+    - 5-hydroxytryptamine receptors (5-HT) are responsible for neurotransmission. \[3]
+    - Carbonic anhydrase receptors play an important role in many physiological processes including respiration. [4]
+    - Glucocorticoid and androgen receptors are transcription factors and regulate metabolic, homeostatic and differentiation processes. [5]
+
+- Side effects that are fatal by defition were successfully identified by the model, including sudden death and completed suicide.
+
+#### Negative coefficients
+- Drug targets with the words carbonic anhydrase, alpha adrenergic, mineralocorticoid androgen, channel type protein are less likely to result in fatal side effects.
+
+#### Further investigation required
+- The same issue with serious side effects, where nsaid induced and induced ulcers have contradicting coefficients, arises here.
+- Also drug targets involving carbonic anhydrase and adrenergic alpha have contradicting coefficients as well.
+
+
+## Limitations
+### Data
+#### Yellow Card Scheme reports
+1. Reports rely on voluntary reporting:
+    - The reports may not truly represent the distribution of side effect severity in real life.
+    
+2. Naturally skewed class distribution:
+    - Low fatal cases - Medicinal products will only receive marketing license if they pass extensive clinical trials and their drug safety profiles are established. Fatal side effects would have been identified in early stages of research and development.
+    - Difficult to pinpoint patient's cause of death - Patients are likely to be admitted to hospital if they experience serious or fatal side effects. It may be difficult to identify whether the cause of death is due to patient's underlying conditions and comorbidities, complications while admitted, or the actual side effects from the drug.
+    - Low non-serious cases - By nature, people are less likely to report non-serious side effects as they are less alarming. Also, as most reporters are health care professionals, there may be other more pressing issues at hand (e.g. providing care to critically ill patients) than to report a non-serious side effect.
+   
+3. Subjectivity/ ambiguity in determining the severity of side effects:
+    - The severity of side effects is partially determined by the reporter themselves. The side effect may be reported as serious if they consider it serious.
+    - Criteria provided by the MHRA has 6 options, but there are only 3 classes:
+    ![](screenshots/severity_definitions.png)
+    Only 1 of 6 options count as fatal, but there is no clear definition on how the other 5 options are categorised into non-serious and serious.
+
+#### Drugs.com reviews
+1. Not recent:
+     - Reviews are only up to 2018, so may not represent patients' current views on medicinal products.
+2. US brands:
+    - Reviews are on US brand products, which are different from the products marketed in the UK. Not all drugs reported in the Yellow Card Scheme have reviews from this data source.
+    - Even if the active ingredients are the same, formulations may be different in the US, including taste. Reviews may not accurately represent patient experience of products in the UK.
+
+
+#### DrugBank
+1. US brands:
+    - This website mainly contains information on US drugs. Not all drugs reported in the Yellow Card Scheme have information available from this data source. For instance, information on drug categories and drug targets were missing for most drugs.
+
+### Others
+1. Insufficient RAM/ computational power
+    - As mentioned above, insufficient RAM was a major challenge in completing this project.
+2. Insufficient time
+    - This was due to many attempts in overcoming the lack of RAM to finalise my data set and run models on a large data set.
+3. Fewer data points after under-sampling training set.
+    - Under-sampling was performed on the training set due to the extremely imbalanced class distributions (74% serious vs 0.06% fatal).
+    - This resulted in fewer data points in training set than test set, therefore the models were trained with insufficient data.
+    - Due to time constraint, I decided to still run the models to obtain preliminary results.
+
 
 ## Future Work
+### Data
+- Incorporate drug categories based on drug indications, such as ATC codes from the WHO.
+- Include actual reviews for more NLP and potentially sentiment analysis.
+- Dummify drug target column instead of using CountVectorizer, as picking out 2 words from the drug targets give little information when extracting feature importances.
+
+### Modeling
+- Use a different under-/over-sampling method and ratio.
+- Increase sample size and increase training set data points.
+- Run more extensive models.
+- Fine tune grid-search parameters.
+
+### Others
+- Utilise AWS to tackle the challenge of insufficient RAM.
+
+## Conclusion
+Although most scores were below baseline accuracy, given the time constraint and challenges faced during the six-week period, logistic regression was still able to provide insightful preliminary results. It was able to predict non-serious and fatal side effects fairly well. Also, the model identified sudden death and completed suicide as fatal. Feature importances extracted were able to provide insight into drug targets and conditions that could potentially result in fatal side effects.
+
+With adjustments mentioned in the future work implemented, the models are likely to perform better, with higher scores and more accurate feature importances.
+
 
 ## Citations
 1. General Pharmaceutical Council. What does a pharmacist do? Retrieved March 23, 2021, from https://www.pharmacyregulation.org/raising-concerns/raising-concerns-about-pharmacy-professional/what-expect-your-pharmacy/what-does-0
 2. MHRA. About yellow card. Retrieved March 23, 2021, from https://yellowcard.mhra.gov.uk/the-yellow-card-scheme/
+3. HUGO Gene Nomenclature Committee. Gene group: 5-hydroxytryptamine receptors (HTR). Retrieved March 24, 2021, from https://www.genenames.org/data/genegroup/#!/group/171
+4. Gilmour, K. (2011, September 22). TRANSPORT and exchange of respiratory gases in the BLOOD: Carbonic ANHYDRASE in Gas transport and exchange. Retrieved March 24, 2021, from https://www.sciencedirect.com/science/article/pii/B9780123745538001131
+5. Lempiäinen JK;Niskanen EA;Vuoti KM;Lampinen RE;Göös H;Varjosalo M;Palvimo JJ. Agonist-specific protein INTERACTOMES OF glucocorticoid and androgen receptor as revealed by PROXIMITY MAPPING. Retrieved March 24, 2021, from https://pubmed.ncbi.nlm.nih.gov/28611094/
