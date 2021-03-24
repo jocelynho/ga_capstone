@@ -1,4 +1,4 @@
-[](screenshots/banner.png)
+![](screenshots/banner.png)
 # Technical Report
 
 ## Introduction
@@ -33,7 +33,7 @@ Potential audeince includes:
 
 
 ## Methodology
-[](screenshots/methodology.png)
+![](screenshots/methodology.png)
 
 ## Data collection
 3 different sources were used for this project:
@@ -72,7 +72,7 @@ A big challenge of utilising this data set is to convert the brand names (e.g. C
 In order to tackle this issue, I utilised `Selenium` to obtain the active ingredients of each product from [Drugs.com](https://www.drugs.com/). I used `.split()` to separate the string of active ingredients into a list of separate strings. Then, I used `.explode()` to duplicate the reviews, so that each active ingredient has a copy of all the reviews of the product it is contained in. Lastly, I re-grouped the reviews by the DrugBank ID, so that I am able to add the conglomerated reviews and ratings to the data set I initially created.
 
 Here is a snippet of the codes I used:
-[](screenshots/brand_to_drug.png).
+![](screenshots/brand_to_drug.png).
 
 For a more detailed step-by-step process, please see [this notebook](https://github.com/jocelynho/ga_capstone/1_data_collection/1c_reviews.ipynb).
 
@@ -83,7 +83,7 @@ The biggest challenge I encountered during the 6 weeks assigned to this project 
 I was then introduced to a new library called `Dask` (for full destails please visit [Dask](https://dask.org/)). It uses dynamic task scheduling while supporting Pandas dataframes, and avoids excess memory use by processing small chunks of data and throwing away intermediate values as soon as possible. It enables large dataset computations on low-power laptops, which is the issue at hand.
 
 This is how a Dask dashboard looks like:
-[](screenshots/dask.png)
+![](screenshots/dask.png)
 
 ## More challenges
 Even though I eventually managed to merge my dataset using Dask, I still encountered other issues:
@@ -99,57 +99,57 @@ The final data set has:
 
 ## EDA
 ### Histograms showing distributions of reporter details
-[](screenshots/eda_1.jpg)
+![](screenshots/eda_1.jpg)
 - Most reporters were female
 - Most reporters were direct (not reported by pharmaceutical companies)
 - Most reporters were consumers (patients and/or carers)
 - Most reporters were health care professionals.
 
 ### Histograms showing distributions of continuous variables
-[](screenshots/eda_2.jpg)
+![](screenshots/eda_2.jpg)
 - Most reporters were within the age-range of 40 to 70 years old.
 - Most commonly reported side effects were gastrointestional, general, skin, and nervous system related.
 - Most reviews were rated from 6 to 9, with a peak at about 8.5.
 
 ### Box plots showing severity of side effects against continuous variables
-[](screenshots/eda_3.jpg)
+![](screenshots/eda_3.jpg)
 - Majority of fatal side effects were reported for patients at older age ranges, from 40 to 70 years old.
 - Most non-serious side effects were reported earlier on from 1990s, meanwhile most serious and fatal side effects were reported from after 2000.
 - Drugs with fatal side effects seem to have higher review ratings compared to non-serious and serious side effects.
 
 ### Box plots showing types of side effects against continuous variables
-[](screenshots/eda_4.png)
+![](screenshots/eda_4.png)
 - Congenital and pregnancy related side effects were reported for patients from the age of 0 to 30 years old, by definition these side effects occur at or near birth. Other side effects mostly occur from 30 to 60 years old.
 - Drugs related to surgical side effects mostly have the highest ratings from 7 to 8.5; those related to pregnancy side effecs have lower ratings from below 6 to about 7.5.
 - Congenital side effects were reported early on from about 1985, possibly due to fewer and less stringent clinical trials and regulations, or possibly due to the thalidomide scandal. Most product issues and social circumstances related side effects are reported latest, after 2010.
 
 ### Histogram showing distribution of classes of target variable
-[](screenshots/eda_5.png)
+![](screenshots/eda_5.png)
 - The classes within the target variable are very imbalanced, with over 74% being serious, and 0.06% being fatal side effects. This would be addressed at a later stage, using the library `imblearn`.
 
 ### NLP on text columns
-[](screenshots/nlp.png)
+![](screenshots/nlp.png)
 - `CountVectorizer` was used on drug targets and drug indications. `ngram_range` of 2 was chosen after trial and error.
 - For drug targets, subunit alpha, muscarinic acetylcholine, adrenergic alpha and growth factor were the msot frequent words.
 - For drug indications, influenza prophylaxis, nausea and vomiting related to pregnancy, birth control, and high blood pressure were the most common words.
 - `TfidfVectorizer` was used on the drugs.com reviews. Words including blood pressure, birth control, weight gain, dry mouth, mood swings had high scores. Such side effects could also be related to birth control medications (e.g. weight gain, mood swings) and blood pressure medications (e.g. dry mouth).
 
 ## Data modeling
-[](screenshots/models.png)
+![](screenshots/models.png)
 Logistic Regression had the highest mean cross-validated accuracy score of 0.699.
 
 ## Results
 ### Confusion matrix
-[](screenshots/confusion_matrices.jpg)
+![](screenshots/confusion_matrices.jpg)
 - Both training and test set results show that the model performed relatively well in determining non-serious and fatal side effects, however was unable to accurately predict serious side effects.
 - This is also reflected by the low precision and recall scores for class s (serious).
 
 ## Receiver operating characteristic curves and precision-recall curves
-[](screenshots/roc_curves.jpg)
+![](screenshots/roc_curves.jpg)
 - Serious side effects performed the worst out of the 3 classes and has the lowest area-under-curve.
 
 ## Feature importances
-[](screenshots/feature_importances.jpg)
+![](screenshots/feature_importances.jpg)
 ### Non-serious
 Side effects involving the following were least likely to be predicted as non-serious side effects:
 - the brain (cerebral haemorrhage, confusional state, loss consciousness, cerebrovascula accident),
@@ -167,5 +167,3 @@ Drugs targeting fatty acid receptors were predicted to be less important in non-
 ## Citations
 1. General Pharmaceutical Council. What does a pharmacist do? Retrieved March 23, 2021, from https://www.pharmacyregulation.org/raising-concerns/raising-concerns-about-pharmacy-professional/what-expect-your-pharmacy/what-does-0
 2. MHRA. About yellow card. Retrieved March 23, 2021, from https://yellowcard.mhra.gov.uk/the-yellow-card-scheme/
-
-
