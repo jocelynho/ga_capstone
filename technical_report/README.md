@@ -120,7 +120,7 @@ The final data set has:
 - Drugs with fatal side effects seem to have higher review ratings compared to non-serious and serious side effects.
 
 ### Box plots showing types of side effects against continuous variables
-![](screenshots/eda_4.png)
+![](screenshots/eda_4.jpg)
 - Congenital and pregnancy related side effects were reported for patients from the age of 0 to 30 years old, by definition these side effects occur at or near birth. Other side effects mostly occur from 30 to 60 years old.
 - Drugs related to surgical side effects mostly have the highest ratings from 7 to 8.5; those related to pregnancy side effecs have lower ratings from below 6 to about 7.5.
 - Congenital side effects were reported early on from about 1985, possibly due to fewer and less stringent clinical trials and regulations, or possibly due to the thalidomide scandal. Most product issues and social circumstances related side effects are reported latest, after 2010.
@@ -144,6 +144,7 @@ The final data set has:
 
 ## Data modeling
 ![](screenshots/models.png)
+
 Logistic Regression had the highest mean cross-validated accuracy score of 0.699.
 
 ## Results
