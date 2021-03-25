@@ -11,7 +11,7 @@ I completed this end-to-end project within 6 weeks, from creating a problem stat
 ### Files in this repository
 - [Presentation slides](https://github.com/jocelynho/ga_capstone/blob/57f6d026c7c1f9d1b717007e2170079e1a1de7d3/slides/Jocelyn_Ho_Capstone_Presentation.pdf):
     - Slides were aimed at a non-technical audience, and were used for the final capstone presentation during the course.
-- [Technical report](https://github.com/jocelynho/ga_capstone/blob/8d70a4947382c13230499eac0c6d7ca44fa506d2/technical_report/README.md):
+- [Technical report](https://github.com/jocelynho/ga_capstone/tree/master/technical_report):
     - This includes introduction, objectives, methodology, information on the dataset, EDA, findings, conclusion, and future work.
 - Folders containing Jupyter notebooks `(.ipynb)`:
     1) [Data Collection](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection) - 3 notebooks 
