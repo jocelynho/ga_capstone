@@ -14,11 +14,19 @@ I completed this end-to-end project within 6 weeks, from creating a problem stat
 - [Technical report](https://github.com/jocelynho/ga_capstone/tree/master/technical_report):
     - This includes introduction, objectives, methodology, information on the dataset, EDA, findings, conclusion, and future work.
 - Folders containing Jupyter notebooks `(.ipynb)`:
-    1) [Data Collection](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection) - 3 notebooks 
-    2) [Creating Dataset]()
-    3) [Exploratory Data Analysis (EDA) and Data Modelling]()
+    1) Data Collection (3 notebooks, 1 for each data source):
+        - a) [Yellow Card Scheme](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection/1a_yellow_card.ipynb)
+        - b) [DrugBank](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection/1b_drugbank.ipynb)
+        - c) [Drugs.com reviews](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection/1c_reviews.ipynb)
+    2) Creating Dataset (2 notebooks):
+        - a) [SQL on Yellow Card data](https://github.com/jocelynho/ga_capstone/blob/master/2_create_dataset/2a_sql_yellow_card.ipynb)
+        - b) [Merging all data sources together](https://github.com/jocelynho/ga_capstone/blob/master/2_create_dataset/2b_create_dataset.ipynb)
+    3) Exploratory Data Analysis (EDA), Data Modelling, and NLP (4 notebooks):
+        - a) [EDA and modelling](https://github.com/jocelynho/ga_capstone/blob/master/3_eda/capstone_5_cleaning_eda.ipynb)
+        - b) [Extra NLP on reviews](https://github.com/jocelynho/ga_capstone/blob/master/3_eda/capstone_7_nlp_reviews.ipynb)
+        - c) [Extra NLP on DrugBank data](https://github.com/jocelynho/ga_capstone/blob/master/3_eda/capstone_8_nlp_drugbank.ipynb)
 
-
+> Note: If the notebooks do not load, please use the [nbviewer](https://nbviewer.jupyter.org/) by copying and pasting the urls.
 
 ### Prerequisites for this project
 Key libraries used in this project include:
