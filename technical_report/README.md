@@ -174,7 +174,7 @@ Drugs targeting fatty acid receptors were predicted to be less important in non-
 
 ### Serious
 #### Positive coefficients
-- Drug targets with the words cahnnel protein, neuronal acetylcholine subunit, vascular, carbonic anhydrase and alpha adrenergic are more likely to result in serious side effects.
+- Drug targets with the words channel protein, neuronal acetylcholine subunit, vascular, carbonic anhydrase and alpha adrenergic are more likely to result in serious side effects.
 - Photosensitivity reaction and tonic clonic (seizure) are predicted as serious side effects.
 
 #### Negative coefficients
