@@ -9,22 +9,25 @@ I completed this end-to-end project within 6 weeks, from creating a problem stat
 
 
 ### Files in this repository
-- [Presentation slides](https://github.com/jocelynho/ga_capstone/blob/57f6d026c7c1f9d1b717007e2170079e1a1de7d3/slides/Jocelyn_Ho_Capstone_Presentation.pdf):
-    - Slides were aimed at a non-technical audience, and were used for the final capstone presentation during the course.
 - [Technical report](https://github.com/jocelynho/ga_capstone/tree/master/technical_report):
     - This includes introduction, objectives, methodology, information on the dataset, EDA, findings, conclusion, and future work.
 - Folders containing Jupyter notebooks `(.ipynb)`:
     1) Data Collection (3 notebooks, 1 for each data source):
-        - a) [Yellow Card Scheme](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection/1a_yellow_card.ipynb)
-        - b) [DrugBank](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection/1b_drugbank.ipynb)
-        - c) [Drugs.com reviews](https://github.com/jocelynho/ga_capstone/blob/master/1_data_collection/1c_reviews.ipynb)
+        - a) [Yellow Card Scheme](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/1_data_collection/1a_yellow_card.ipynb)
+        - b) [DrugBank](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/1_data_collection/1b_drugbank.ipynb)
+        - c) [Drugs.com reviews](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/1_data_collection/1c_reviews.ipynb)
     2) Creating Dataset (2 notebooks):
-        - a) [SQL on Yellow Card data](https://github.com/jocelynho/ga_capstone/blob/master/2_create_dataset/2a_sql_yellow_card.ipynb)
-        - b) [Merging all data sources together](https://github.com/jocelynho/ga_capstone/blob/master/2_create_dataset/2b_create_dataset.ipynb)
-    3) Exploratory Data Analysis (EDA), Data Modelling, and NLP (4 notebooks):
-        - a) [EDA and modelling](https://github.com/jocelynho/ga_capstone/blob/master/3_eda/capstone_5_cleaning_eda.ipynb)
-        - b) [Extra NLP on reviews](https://github.com/jocelynho/ga_capstone/blob/master/3_eda/capstone_7_nlp_reviews.ipynb)
-        - c) [Extra NLP on DrugBank data](https://github.com/jocelynho/ga_capstone/blob/master/3_eda/capstone_8_nlp_drugbank.ipynb)
+        - a) [SQL on Yellow Card data](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/2_create_dataset/2a_sql_yellow_card.ipynb)
+        - b) [Merging all data sources together](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/2_create_dataset/2b_create_dataset.ipynb)
+    3) Exploratory Data Analysis (EDA):
+        - a) [EDA](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/3_eda/3_eda.ipynb)
+    4) [Data Modelling](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/5_models/5_models.ipynb)
+    5) Extra Natural Language Processing (NLP) trials:
+        - b) [Extra NLP on reviews](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/3_eda/capstone_7_nlp_reviews.ipynb)
+        - c) [Extra NLP on DrugBank data](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/3_eda/capstone_8_nlp_drugbank.ipynb)
+        
+- [Presentation slides](https://github.com/jocelynho/ga_capstone/blob/57f6d026c7c1f9d1b717007e2170079e1a1de7d3/slides/Jocelyn_Ho_Capstone_Presentation.pdf):
+    - Slides were aimed at a non-technical audience, and were used for the final capstone presentation during the course.
 
 > Note: If the notebooks do not load, please use the [nbviewer](https://nbviewer.jupyter.org/) by copying and pasting the urls.
 
