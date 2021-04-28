@@ -19,8 +19,7 @@ I completed this end-to-end project within 6 weeks, from creating a problem stat
     2) Creating Dataset (2 notebooks):
         - a) [SQL on Yellow Card data](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/2_create_dataset/2a_sql_yellow_card.ipynb)
         - b) [Merging all data sources together](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/2_create_dataset/2b_create_dataset.ipynb)
-    3) Exploratory Data Analysis (EDA):
-        - a) [EDA](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/3_eda/3_eda.ipynb)
+    3) [Exploratory Data Analysis (EDA)](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/3_eda/3_eda.ipynb)
     4) [Data Modelling](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/5_models/5_models.ipynb)
     5) Extra Natural Language Processing (NLP) trials:
         - b) [Extra NLP on reviews](https://nbviewer.jupyter.org/github/jocelynho/ga_capstone/blob/master/3_eda/capstone_7_nlp_reviews.ipynb)
